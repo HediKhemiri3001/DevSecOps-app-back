@@ -9,6 +9,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User, UserRoleEnum } from './entities/user.entity';
 import { MailerService } from '@nestjs-modules/mailer';
+import { randomBytes } from 'crypto';
 
 export enum UserEquipmentOrder {
   recent = 'recent',
@@ -59,7 +60,15 @@ export class UsersService {
   async create(registerdto: CreateUserDto): Promise<User> {
     const user = this.usersRepository.create(registerdto);
     user.salt = await bcrypt.genSalt();
-    let password = Math.random().toString(36).slice(-8);
+    var password: string;
+    randomBytes(36, (err, buf) => {
+      if (err) {
+        // Prints error
+        console.log(err);
+        return;
+      }
+      password = buf.toString().slice(-8);
+    });
     user.password = await bcrypt.hash(password, user.salt);
 
     //mail
