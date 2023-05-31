@@ -4,6 +4,7 @@ specifiers:
   '@nestjs-modules/mailer': ^1.8.1
   '@nestjs/cli': ^8.0.0
   '@nestjs/common': ^8.0.0
+  '@nestjs/config': ^2.3.2
   '@nestjs/core': ^8.0.0
   '@nestjs/jwt': ^9.0.0
   '@nestjs/mapped-types': '*'
@@ -52,6 +53,7 @@ specifiers:
 dependencies:
   '@nestjs-modules/mailer': 1.8.1_2jhirklo4iq5tujlosmqj3m5ju
   '@nestjs/common': 8.4.7_wxvusd7m6nneltaoqgtc3qnmfi
+  '@nestjs/config': 2.3.2_pywgzl5w522sa4xe5k7bb2y2xm
   '@nestjs/core': 8.4.7_3fm6rxl6b3dq74z7xivxeczlhe
   '@nestjs/jwt': 9.0.0_@nestjs+common@8.4.7
   '@nestjs/mapped-types': 1.2.2_7zw7e46jhcfuw5vwuwho2brjki
@@ -978,6 +980,22 @@ packages:
       uuid: 8.3.2
     transitivePeerDependencies:
       - debug
+
+  /@nestjs/config/2.3.2_pywgzl5w522sa4xe5k7bb2y2xm:
+    resolution: {integrity: sha512-VtGV8PBpxzMzz68kdxTWqPm9v7SYCSZXQ0tC72AMNnjdmU+CVjUSLpEpdnm0XcWHxE1nV6wSI3HZxsATIV4ZxA==}
+    peerDependencies:
+      '@nestjs/common': ^7.0.0 || ^8.0.0 || ^9.0.0
+      reflect-metadata: ^0.1.13
+      rxjs: ^6.0.0 || ^7.2.0
+    dependencies:
+      '@nestjs/common': 8.4.7_wxvusd7m6nneltaoqgtc3qnmfi
+      dotenv: 16.0.3
+      dotenv-expand: 10.0.0
+      lodash: 4.17.21
+      reflect-metadata: 0.1.13
+      rxjs: 7.8.1
+      uuid: 9.0.0
+    dev: false
 
   /@nestjs/core/8.4.7_3fm6rxl6b3dq74z7xivxeczlhe:
     resolution: {integrity: sha512-XB9uexHqzr2xkPo6QSiQWJJttyYYLmvQ5My64cFvWFi7Wk2NIus0/xUNInwX3kmFWB6pF1ab5Y2ZBvWdPwGBhw==}
@@ -2788,6 +2806,16 @@ packages:
       dom-serializer: 2.0.0
       domelementtype: 2.3.0
       domhandler: 5.0.3
+    dev: false
+
+  /dotenv-expand/10.0.0:
+    resolution: {integrity: sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==}
+    engines: {node: '>=12'}
+    dev: false
+
+  /dotenv/16.0.3:
+    resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
+    engines: {node: '>=12'}
     dev: false
 
   /dotenv/16.1.2:

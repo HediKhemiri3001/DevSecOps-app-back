@@ -10,20 +10,22 @@ import { ProjectModule } from './project/project.module';
 import { CategoryModule } from './category/category.module';
 import { PropertyModule } from './property/property.module';
 import { ScheduleModule } from '@nestjs/schedule';
-
+import { ConfigModule, ConfigService } from '@nestjs/config';
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: '',
-      database: 'sofiatech',
-      autoLoadEntities: true,
-      entities: ['dist/**/*.entity{.ts,.js}'],
-      synchronize: true,
-      debug: false,
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+        type: 'postgres' as 'postgres',
+        host: configService.get<string>('DATABASE_HOST'),
+        port: parseInt(configService.get<string>('DATABASE_PORT')),
+        username: configService.get<string>('DATABASE_USER'),
+        password: configService.get<string>('DATABASE_PASS'),
+        database: configService.get<string>('DATABASE_NAME'),
+        entities: [__dirname + '/**/*.entity{.ts,.js}'],
+        synchronize: true,
+      }),
+      inject: [ConfigService],
     }),
     ScheduleModule.forRoot(),
     EquipmentModule,
